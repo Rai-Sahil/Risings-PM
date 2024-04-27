@@ -2,20 +2,20 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const UserSchema = new Schema({
+export const StudentSchema = new Schema({
     name: {
         type: String,
         required: true,
     },
-    assignedGoals: {
+    age: {
         type: Number,
-        default: 0
+        required: true,
     },
-    assignedTasks: {
+    grade: {
         type: Number,
-        default: 0
+        required: true,
     },
-    completedTasks: {
+    numberOfGoalsActive: {
         type: Number,
         default: 0
     }

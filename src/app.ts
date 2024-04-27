@@ -3,13 +3,24 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 
+import { StudentRoutes } from './routes/studentRoutes';
+import { TaskRoutes } from './routes/taskRoutes';
+import { GoalRoutes } from './routes/goalRoutes';
+
 class App {
     public app: express.Application;
+    private studentRoutes: StudentRoutes = new StudentRoutes();
+    private taskRoutes: TaskRoutes = new TaskRoutes();
+    private goalRoutes: GoalRoutes = new GoalRoutes();
 
     constructor() {
         this.app = express();
         this.config();
-        this.mongoSetup()
+        this.mongoSetup();
+
+        this.studentRoutes.routes(this.app);
+        this.taskRoutes.routes(this.app);
+        this.goalRoutes.routes(this.app);
     }
 
     private config(): void {

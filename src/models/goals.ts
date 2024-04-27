@@ -2,21 +2,30 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-export const TaskSchema = new Schema({
+export const GoalSchema = new Schema({
     name: {
         type: String,
         required: true,
     },
-    assignee: {
+    studentId:{
         type: String,
         required: true,
     },
     description: {
         type: String,
+        required: true,
     },
     status: {
         type: String,
         default: 'Pending'
+    },
+    numberOfTasks: {
+        type: Number,
+        default: 0
+    },
+    tasksCompleted: {
+        type: Number,
+        default: 0
     },
     createdDate: {
         type: Date,
@@ -30,16 +39,8 @@ export const TaskSchema = new Schema({
         type: Date,
         required: true
     },
-    goalId: {
+    assigneeId: {
         type: String,
-        required: false
-    },
-    priority: {
-        type: String,
-        default: 'Low'
-    },
-    comments: {
-        type: Array,
-        default: []
+        required: true
     }
 });
